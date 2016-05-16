@@ -21,3 +21,18 @@ def instrukcja_gry():
 
     """
     )
+    
+def tak_czy_nie(pytanie):
+    """Pytanie kto chce pierwszy zacząć."""
+    odpowiedz = None
+    while odpowiedz not in ("t", "n"):
+        odpowiedz = input(pytanie).lower()
+    return odpowiedz
+
+def podaj_liczbe(pytanie, low, high):
+    """Ppodanie liczby z odpowiedniego zakresu."""
+    odpowiedz = None
+    while odpowiedz not in range(low, high):
+        odpowiedz = int(input(pytanie))
+    return odpowiedz
+
