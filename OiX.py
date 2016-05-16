@@ -134,4 +134,49 @@ def ruch_kompa(plansza, computer, czlowiek):
             print(ruch)
             return ruch
 
+def kolejka(wykonawca):
+    """Zmień wykonawcę ruchu."""
+    if wykonawca == X:
+        return O
+    else:
+        return X
 
+    
+def kto_wygral(wygrany, computer, czlowiek):
+    """Pogratuluj zwycięzcy."""
+    if wygrany != remis:
+        print(wygrany, "jest zwycięzcą!\n")
+    else:
+        print("Remis!\n")
+
+    if wygrany == computer:
+        print("Wygrywa komputer!")
+
+    elif wygrany == czlowiek:
+        print("Brawo! Pokonałeś komputer!")
+
+    elif wygrany == remis:
+        print("Niestety brak zwycięzcy. Tylko Remis!")
+
+
+def main():
+    instrukcja_gry()
+    computer, czlowiek = pierwszy_ruch()
+    wykonawca = X
+    plansza = nowa_plansza()
+    wyswietlona_plansz(plansza)
+
+    while not zwyciezca(plansza):
+        if wykonawca == czlowiek:
+            ruch = ruch_czlowieka(plansza, czlowiek)
+            plansza[ruch] = czlowiek
+        else:
+            ruch = ruch_kompa(plansza, computer, czlowiek)
+            plansza[ruch] = computer
+        wyswietlona_plansz(plansza)
+        wykonawca = kolejka(wykonawca)
+
+    wygrany = zwyciezca(plansza)
+    kto_wygral(wygrany, computer, czlowiek)
+
+main()
