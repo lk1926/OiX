@@ -95,5 +95,43 @@ def zwyciezca(plansza):
 
     return None
 
+def ruch_czlowieka(plansza, czlowiek):
+    """Odczytuje ruch człowieka."""  
+    legal = prawidlowy_ruch(plansza)
+    ruch = None
+    while ruch not in legal:
+        ruch = podaj_liczbe("Jaki będzie Twój ruch? (0 - 8):", 0, liczba_pol)
+        if ruch not in legal:
+            print("\nTo pole jest już zajęte... Wybierz inne.\n")
+    print("Znakomicie...")
+    return ruch
+
+
+def ruch_kompa(plansza, computer, czlowiek):
+    """Ruch komputera."""
+    plansza = plansza[:]
+    najlepszy_ruch = (4, 0, 2, 6, 8, 1, 3, 5, 7)
+
+    print("Wybieram pole numer", end=" ")
+    
+    for ruch in prawidlowy_ruch(plansza):
+        plansza[ruch] = computer
+        if zwyciezca(plansza) == computer:
+            print(ruch)
+            return ruch
+        plansza[ruch] = puste
+
+    for ruch in prawidlowy_ruch(plansza):
+        plansza[ruch] = czlowiek
+        if zwyciezca(plansza) == czlowiek:
+            print(ruch)
+            return ruch
+        plansza[ruch] = puste
+
+
+    for ruch in najlepszy_ruch:
+        if ruch in prawidlowy_ruch(plansza):
+            print(ruch)
+            return ruch
 
 
