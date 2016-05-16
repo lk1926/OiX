@@ -36,3 +36,26 @@ def podaj_liczbe(pytanie, low, high):
         odpowiedz = int(input(pytanie))
     return odpowiedz
 
+def pierwszy_ruch():
+    """Czy pierwszy ruch należy do gracza, czy do komputera."""
+    pierwszy = tak_czy_nie("Czy chcesz mieć prawo do pierwszego ruchu? (t/n): ")
+    if pierwszy == "t":
+        print("\nWięc pierwszy ruch należy do Ciebie.")
+        czlowiek = X
+        computer = O
+    else:
+        print("\nJa wykonuję pierwszy ruch.")
+        computer = X
+        czlowiek = O
+    return computer, czlowiek
+
+
+def nowa_plansza():
+    """Nowa plansza gry."""
+    plansza = []
+    for pole in range(liczba_pol):
+        plansza.append(puste)
+    return plansza
+
+
+
