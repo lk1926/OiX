@@ -74,5 +74,26 @@ def prawidlowy_ruch(plansza):
             lista_ruchow.append(pole)
     return lista_ruchow
 
+def zwyciezca(plansza):
+    """Ustala zwycięzcę gry."""
+    jak_wygrac = ((0, 1, 2),
+                   (3, 4, 5),
+                   (6, 7, 8),
+                   (0, 3, 6),
+                   (1, 4, 7),
+                   (2, 5, 8),
+                   (0, 4, 8),
+                   (2, 4, 6))
+    
+    for row in jak_wygrac:
+        if plansza[row[0]] == plansza[row[1]] == plansza[row[2]] != puste:
+            zwyciezca = plansza[row[0]]
+            return zwyciezca
+
+    if puste not in plansza:
+        return remis
+
+    return None
+
 
 
